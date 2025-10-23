@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Обработка изображений — Вариант 11</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<h1>Обработка изображений — Вариант 11</h1>
+<div class="container">
+  <input type="file" id="upload" accept="image/*"/>
+  <div class="controls">
+    <div class="buttons">
+      <button id="local">Локальная пороговая</button>
+      <button id="adaptive">Адаптивная пороговая</button>
+      <button id="linear">Линейное контрастирование</button>
+      <button id="invert">Инвертирование</button>
+      <button id="reset">Сброс</button>
+      <button id="download">Скачать PNG</button>
+    </div>
+
+    <div class="params">
+      <label>Радиус локального окна: <input id="localRadius" type="range" min="1" max="50" value="10"/> <span id="localRadiusVal">10</span></label>
+      <label>Адаптивный S (радиус): <input id="adaptiveS" type="range" min="1" max="50" value="15"/> <span id="adaptiveSVal">15</span></label>
+      <label>Адаптивный k: <input id="adaptiveK" type="range" min="0" max="100" value="20"/> <span id="adaptiveKVal">0.20</span></label>
+    </div>
+  </div>
+
+  <canvas id="canvas"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

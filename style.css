@@ -1,0 +1,18 @@
+/* style.css */
+body {
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+h1 { color:#333; }
+.container { display:flex; flex-direction:column; align-items:center; gap:12px; }
+canvas { border:1px solid #333; margin-top:10px; max-width:90%; }
+.buttons { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:8px; }
+button { padding:8px 14px; border:none; background:#333; color:white; border-radius:6px; cursor:pointer; }
+button:hover { background:#555; }
+.params { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; max-width:90%; }
+label { font-size:14px; display:flex; align-items:center; gap:8px; }
+input[type="range"] { vertical-align:middle; }
+input[type="file"] { margin-bottom:6px; }
