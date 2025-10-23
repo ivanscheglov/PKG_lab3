@@ -1,4 +1,4 @@
-// script.js
+
 const upload = document.getElementById('upload');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -30,10 +30,8 @@ upload.addEventListener('change', e => {
   reader.onload = function(event) {
     const img = new Image();
     img.onload = function() {
-      // set canvas size (no CSS scaling here)
       imgWidth = img.width;
       imgHeight = img.height;
-      // handle high DPI display
       const ratio = window.devicePixelRatio || 1;
       canvas.width = Math.round(imgWidth * ratio);
       canvas.height = Math.round(imgHeight * ratio);
@@ -63,7 +61,6 @@ invertBtn.onclick = () => {
     d[i] = 255 - d[i];
     d[i+1] = 255 - d[i+1];
     d[i+2] = 255 - d[i+2];
-    // alpha unchanged
   }
   ctx.putImageData(imgData, 0, 0);
 };
@@ -72,7 +69,6 @@ linearBtn.onclick = () => {
   if (!originalImage) return alert('Сначала загрузите изображение');
   const imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
   const d = imgData.data;
-  // compute min and max of grayscale without spread
   let min = 255, max = 0;
   for (let i=0;i<d.length;i+=4){
     const g = 0.299*d[i] + 0.587*d[i+1] + 0.114*d[i+2];
@@ -89,7 +85,6 @@ linearBtn.onclick = () => {
   ctx.putImageData(imgData, 0, 0);
 };
 
-// helper: build grayscale array (Float64Array) row-major
 function buildGrayArray(imgData, w, h){
   const d = imgData.data;
   const gray = new Float64Array(w*h);
@@ -102,7 +97,6 @@ function buildGrayArray(imgData, w, h){
   return gray;
 }
 
-// integral image (sum) and integral of squares
 function buildIntegralImages(gray, w, h){
   const integral = new Float64Array((w+1)*(h+1)); // padded with zero row/col
   const integralSq = new Float64Array((w+1)*(h+1));
@@ -121,9 +115,7 @@ function buildIntegralImages(gray, w, h){
   return {integral, integralSq};
 }
 
-// get sum on rectangle using integral (inclusive coords)
 function rectSum(integral, w, x1, y1, x2, y2){
-  // integral has width (w+1)
   const W = w+1;
   const A = y1*W + x1;
   const B = y1*W + x2+1;
@@ -203,3 +195,4 @@ downloadBtn.onclick = () => {
   a.download = 'result.png';
   a.click();
 };
+
