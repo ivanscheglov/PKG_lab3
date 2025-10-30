@@ -2,7 +2,7 @@
 const upload = document.getElementById('upload');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-let originalImage = null; // ImageData
+let originalImage = null;
 let imgWidth = 0, imgHeight = 0;
 
 const localBtn = document.getElementById('local');
@@ -152,8 +152,8 @@ localBtn.onclick = () => {
 adaptiveBtn.onclick = () => {
   if (!originalImage) return alert('Сначала загрузите изображение');
   const S = parseInt(adaptiveSInput.value, 10);
-  const kVal = parseInt(adaptiveKInput.value, 10)/100.0; // slider 0..100 -> 0..1
-  const R = 128; // dynamic range, common default
+  const kVal = parseInt(adaptiveKInput.value, 10)/100.0; 
+  const R = 128;
   const imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
   const w = canvas.width, h = canvas.height;
   const gray = buildGrayArray(imgData, w, h);
@@ -183,7 +183,6 @@ adaptiveBtn.onclick = () => {
 
 downloadBtn.onclick = () => {
   if (!originalImage) return alert('Сначала загрузите изображение');
-  // create a temporary canvas with displayed size
   const tmp = document.createElement('canvas');
   tmp.width = imgWidth;
   tmp.height = imgHeight;
@@ -195,5 +194,6 @@ downloadBtn.onclick = () => {
   a.download = 'result.png';
   a.click();
 };
+
 
 
