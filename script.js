@@ -39,7 +39,7 @@ upload.addEventListener('change', e => {
       canvas.style.height = imgHeight + 'px';
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
-      originalImage = ctx.getImageData(0,0,imgWidth,imgHeight); // copy of pixels
+      originalImage = ctx.getImageData(0,0,imgWidth,imgHeight); 
     };
     img.src = event.target.result;
   };
@@ -98,7 +98,7 @@ function buildGrayArray(imgData, w, h){
 }
 
 function buildIntegralImages(gray, w, h){
-  const integral = new Float64Array((w+1)*(h+1)); // padded with zero row/col
+  const integral = new Float64Array((w+1)*(h+1)); 
   const integralSq = new Float64Array((w+1)*(h+1));
   // integral indexing: (y*(w+1) + x)
   for (let y=1;y<=h;y++){
@@ -195,4 +195,5 @@ downloadBtn.onclick = () => {
   a.download = 'result.png';
   a.click();
 };
+
 
